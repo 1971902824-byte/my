@@ -1,0 +1,331 @@
+<!doctype html>
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>班级课前学习全景报告</title>
+
+    <link rel="stylesheet" href="css/class-report.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud/dist/echarts-wordcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="report-page">
+      <!-- 顶部 -->
+
+      <div class="top-bar">
+        <div class="header-grid">
+          <div>
+            章节：
+            <span id="chapterText">-章-节</span>
+            班级课前学习全景报告
+          </div>
+
+          <div>
+            班级：
+            <span id="classNameText">-</span>
+          </div>
+
+          <div>
+            班级人数：
+            <span id="classCountText">-</span>
+          </div>
+
+          <div>
+            完成人数：
+            <span id="finishCountText">-</span>
+          </div>
+
+          <div>
+            完成率：
+            <span id="finishRateText">-%</span>
+          </div>
+        </div>
+
+        <button id="openFormBtn" class="hidden-trigger"></button>
+      </div>
+
+      <!-- 第一行 -->
+
+      <div class="main-box">
+        <div class="module-title">模块一：知识层面班级画像</div>
+
+        <div class="three-cols">
+          <!-- 左 -->
+
+          <div class="sub-box">
+            <div class="sub-title">最终层级分布</div>
+
+            <div id="levelContainer">
+              <div class="level-row">
+                <div class="level-name">L1基础理解层</div>
+
+                <div class="progress">
+                  <div id="l1Bar" class="progress-inner"></div>
+                </div>
+
+                <div id="l1Text">-人 -%</div>
+              </div>
+
+              <div class="level-row">
+                <div class="level-name">L2综合应用层</div>
+
+                <div class="progress">
+                  <div id="l2Bar" class="progress-inner"></div>
+                </div>
+
+                <div id="l2Text">-人 -%</div>
+              </div>
+
+              <div class="level-row">
+                <div class="level-name">L3拓展探究层</div>
+
+                <div class="progress">
+                  <div id="l3Bar" class="progress-inner"></div>
+                </div>
+
+                <div id="l3Text">-人 -%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 中 -->
+
+          <div class="sub-box">
+            <div class="sub-title">知识掌握雷达图（平均）</div>
+
+            <div class="radar-layout">
+              <div id="knowledgeRadar" class="radar-chart"></div>
+            </div>
+          </div>
+
+          <!-- 右 -->
+
+          <div class="sub-box">
+            <!-- 上 -->
+            <div class="mooc-box">
+              <span>慕课观看情况：</span>
+              <span>完成人数 <span id="moocCountText">-</span>/30</span>
+            </div>
+
+            <!-- 下 -->
+            <div class="weak-box">
+              <div class="sub-title">知识点薄弱Top3</div>
+
+              <div class="weak-list">
+                <div>
+                  1.
+                  <span id="weak1Text"> - </span>
+                </div>
+
+                <div>
+                  2.
+                  <span id="weak2Text"> - </span>
+                </div>
+
+                <div>
+                  3.
+                  <span id="weak3Text"> - </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 第四部分 - 讨论区词云 -->
+          <div class="sub-box">
+            <div class="sub-title">讨论区词云分析</div>
+            <div
+              id="discussWordCloud"
+              class="radar-chart"
+              style="flex: 1"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第二行 -->
+
+      <!-- 第三行：模块二 + 模块三 1:1 布局 -->
+      <div class="main-box two-module-row">
+        <!-- 模块二：案例分析班级画像 -->
+        <div class="half-module">
+          <div class="module-title">模块二：案例分析班级画像</div>
+
+          <div class="module-two-grid">
+            <!-- 小组上传情况 -->
+            <div class="sub-box">
+              <div class="sub-title">小组上传情况</div>
+              <div class="group-list">
+                <!-- 小组1 -->
+                <div class="group-head">
+                  <div class="group-title">
+                    小组1：<span id="group1NameTitle">-</span>
+                  </div>
+                  <div class="upload-actions">
+                    <button class="icon-btn" title="文件">
+                      <i class="fa-solid fa-file-lines"></i>
+                    </button>
+                    <button class="icon-btn" title="视频">
+                      <i class="fa-solid fa-video"></i>
+                    </button>
+                    <button class="icon-btn" title="代码">
+                      <i class="fa-solid fa-code"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="group-score-row">
+                  <div>AI：<span id="group1AiText">-</span></div>
+                  <div>组间：<span id="group1PeerText">-</span></div>
+                  <div>教师：<span id="group1TeacherText">-</span></div>
+                  <div>整合：<span id="group1FinalText">-</span></div>
+                </div>
+
+                <!-- 小组2 -->
+                <div class="group-head">
+                  <div class="group-title">
+                    小组2：<span id="group2NameTitle">-</span>
+                  </div>
+                  <div class="upload-actions">
+                    <button class="icon-btn" title="文件">
+                      <i class="fa-solid fa-file-lines"></i>
+                    </button>
+                    <button class="icon-btn" title="视频">
+                      <i class="fa-solid fa-video"></i>
+                    </button>
+                    <button class="icon-btn" title="代码">
+                      <i class="fa-solid fa-code"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="group-score-row">
+                  <div>AI：<span id="group2AiText">-</span></div>
+                  <div>组间：<span id="group2PeerText">-</span></div>
+                  <div>教师：<span id="group2TeacherText">-</span></div>
+                  <div>整合：<span id="group2FinalText">-</span></div>
+                </div>
+
+                <!-- 小组3 -->
+                <div class="group-head">
+                  <div class="group-title">
+                    小组3：<span id="group3NameTitle">-</span>
+                  </div>
+                  <div class="upload-actions">
+                    <button class="icon-btn" title="文件">
+                      <i class="fa-solid fa-file-lines"></i>
+                    </button>
+                    <button class="icon-btn" title="视频">
+                      <i class="fa-solid fa-video"></i>
+                    </button>
+                    <button class="icon-btn" title="代码">
+                      <i class="fa-solid fa-code"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="group-score-row">
+                  <div>AI：<span id="group3AiText">-</span></div>
+                  <div>组间：<span id="group3PeerText">-</span></div>
+                  <div>教师：<span id="group3TeacherText">-</span></div>
+                  <div>整合：<span id="group3FinalText">-</span></div>
+                </div>
+
+                <!-- 小组4 -->
+                <div class="group-head">
+                  <div class="group-title">
+                    小组4：<span id="group4NameTitle">-</span>
+                  </div>
+                  <div class="upload-actions">
+                    <button class="icon-btn" title="文件">
+                      <i class="fa-solid fa-file-lines"></i>
+                    </button>
+                    <button class="icon-btn" title="视频">
+                      <i class="fa-solid fa-video"></i>
+                    </button>
+                    <button class="icon-btn" title="代码">
+                      <i class="fa-solid fa-code"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="group-score-row">
+                  <div>AI：<span id="group4AiText">-</span></div>
+                  <div>组间：<span id="group4PeerText">-</span></div>
+                  <div>教师：<span id="group4TeacherText">-</span></div>
+                  <div>整合：<span id="group4FinalText">-</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 能力维度雷达图 -->
+            <div class="sub-box">
+              <div class="sub-title">能力维度雷达图</div>
+              <div class="radar-layout">
+                <div id="abilityRadar" class="radar-chart"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 模块三：思想与素养多维分析 -->
+        <div class="half-module">
+          <div class="module-title">模块三：思想与素养多维分析</div>
+          <div class="analysis-layout" style="flex: 1">
+            <div id="qualityChart" class="quality-chart"></div>
+
+            <div class="case-word-box">
+              <div class="sub-title">案例报告思政点</div>
+              <div id="caseWordCloud" class="case-word-cloud"></div>
+            </div>
+
+            <div class="analysis-text">
+              <div class="ai-title">AI评价</div>
+              <div id="qualityText">-</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第三行 -->
+
+      <div class="main-box advice-box">
+        <div class="module-title">教学建议</div>
+
+        <div id="adviceText">-</div>
+      </div>
+    </div>
+
+    <!-- 弹窗 -->
+
+    <div class="form-modal" id="formModal">
+      <div class="form-card">
+        <div class="form-head">
+          <div>班级报告信息填写</div>
+
+          <div class="form-head-actions">
+            <button type="button" class="reset-btn" id="resetFormBtn">
+              重置
+            </button>
+            <button id="closeModal">✕</button>
+          </div>
+        </div>
+
+        <form id="reportForm">
+          <div id="formFields"></div>
+
+          <div class="form-actions">
+            <button type="submit">生成报告</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/class-report.js"></script>
+  </body>
+</html>
