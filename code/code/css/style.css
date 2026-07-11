@@ -1,0 +1,772 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+
+  background: linear-gradient(135deg, #eef4ff 0%, #f7faff 45%, #ffffff 100%);
+}
+
+body {
+  color: #1f2937;
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =======================
+   顶部
+======================= */
+
+.header {
+  height: 68px;
+
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  border: 1px solid #dbe7ff;
+
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 28px;
+
+  flex-shrink: 0;
+}
+
+.header-left {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  color: #1e3a8a;
+}
+
+.header-left span {
+  color: #2563eb;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  color: #475569;
+}
+
+.avatar-btn {
+  width: 46px;
+  height: 46px;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+
+  color: white;
+  font-size: 18px;
+
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =======================
+   主体
+======================= */
+
+.main-container {
+  flex: 1;
+
+  display: flex;
+  gap: 14px;
+
+  margin-top: 14px;
+
+  min-height: 0;
+}
+
+.panel {
+  flex: 1;
+
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  border: 1px solid #dbe7ff;
+
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+
+  padding: 18px;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =======================
+   模块标题
+======================= */
+
+.module-title {
+  position: relative;
+
+  font-size: 24px;
+  font-weight: 800;
+
+  color: #1e3a8a;
+
+  padding-left: 16px;
+
+  margin-bottom: 18px;
+}
+
+.module-title::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  top: 3px;
+
+  width: 6px;
+  height: 28px;
+
+  border-radius: 99px;
+
+  background: linear-gradient(to bottom, #60a5fa, #2563eb);
+}
+
+/* =======================
+   左侧
+======================= */
+
+.basic-info {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+
+  margin-bottom: 14px;
+}
+
+.basic-info div {
+  background: #f8fbff;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 14px;
+
+  padding: 14px 16px;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  color: #475569;
+}
+
+.basic-info span {
+  color: #2563eb;
+  font-weight: 800;
+}
+
+.ai-diagnosis {
+  background: #f8fbff;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 14px;
+
+  padding: 14px 18px;
+
+  font-size: 17px;
+  line-height: 1.8;
+
+  color: #475569;
+
+  margin-bottom: 16px;
+}
+
+.ability-section {
+  flex: 1;
+
+  background: #f9fbff;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 18px;
+
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.radar-chart {
+  flex: 1;
+  height: 100%;
+}
+
+.ability-values {
+  width: 240px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 18px;
+}
+
+.ability-values div {
+  background: white;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 12px;
+
+  padding: 12px 16px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  color: #334155;
+}
+
+/* =======================
+   案例区域
+======================= */
+
+.case-row,
+.case-role-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  color: #334155;
+
+  margin-bottom: 10px;
+}
+
+.case-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.small-btn {
+  border: none;
+  cursor: pointer;
+
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+
+  color: white;
+
+  padding: 8px 14px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* =======================
+   AI评价
+======================= */
+
+.row1 {
+  flex: 1.15;
+
+  border-radius: 18px;
+
+  background: #fbfdff;
+
+  border: 1px solid #dbeafe;
+
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
+}
+
+.row-title {
+  font-size: 18px;
+  font-weight: 800;
+
+  color: #1e3a8a;
+
+  margin-bottom: 10px;
+}
+
+.ai-content {
+  flex: 1;
+
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+
+  min-height: 0;
+}
+
+.ai-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #e5eefc;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.ai-box > * {
+  flex: 1;
+  min-height: 0;
+}
+
+.ai-box table {
+  width: 100%;
+  height: 100%;
+}
+
+.ai-table-box {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+/* =======================
+   表格
+======================= */
+
+table {
+  width: 100%;
+  height: auto;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+thead {
+  background: #eff6ff;
+}
+
+th {
+  color: #1e3a8a;
+  font-weight: 700;
+}
+
+th,
+td {
+  border: 1px solid #dbeafe;
+  padding: 8px;
+  text-align: center;
+  line-height: 1.25;
+}
+
+thead {
+  background: #eff6ff;
+}
+
+th {
+  color: #1e3a8a;
+  font-weight: 800;
+}
+
+th,
+td {
+  border: 1px solid #e2e8f0;
+
+  padding: 8px;
+  line-height: 1.25;
+
+  text-align: center;
+}
+
+.star {
+  color: #f59e0b;
+  font-size: 16px;
+}
+
+tbody tr:nth-child(even) {
+  background: #fafcff;
+}
+
+/* =======================
+   词云
+======================= */
+
+.word-cloud {
+  width: 100%;
+  height: 100%;
+}
+
+/* =======================
+   第二行
+======================= */
+
+.row2 {
+  flex: 1;
+
+  display: flex;
+  gap: 10px;
+
+  margin-top: 10px;
+
+  min-height: 0;
+}
+
+.chart-box {
+  flex: 1;
+
+  background: #fbfdff;
+
+  border-radius: 18px;
+
+  border: 1px solid #dbeafe;
+
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
+}
+
+.chart-title {
+  font-size: 17px;
+  font-weight: 800;
+
+  color: #1e3a8a;
+
+  margin-bottom: 8px;
+}
+
+.bar-chart {
+  flex: 1;
+}
+
+/* =======================
+   第三行
+======================= */
+
+.row3 {
+  flex: 1;
+
+  display: flex;
+  gap: 10px;
+
+  margin-top: 10px;
+
+  min-height: 0;
+}
+
+.teacher-chart-box,
+.teacher-comment-box {
+  flex: 1;
+
+  background: #fbfdff;
+
+  border-radius: 18px;
+
+  border: 1px solid #dbeafe;
+
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.teacher-chart {
+  flex: 1;
+}
+
+.teacher-comment-box div:last-child {
+  flex: 1;
+
+  overflow: auto;
+
+  line-height: 1.9;
+
+  font-size: 16px;
+
+  color: #475569;
+}
+
+/* =======================
+   弹窗
+======================= */
+
+.form-modal {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(15, 23, 42, 0.45);
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999;
+}
+
+.form-modal.show {
+  display: flex;
+}
+
+.form-card {
+  width: 920px;
+
+  max-height: 90vh;
+
+  overflow: auto;
+
+  background: white;
+
+  border-radius: 24px;
+
+  border: 1px solid #dbeafe;
+
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+
+  padding: 28px;
+}
+
+.form-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 24px;
+}
+
+.form-title {
+  font-size: 26px;
+  font-weight: 800;
+
+  color: #1e3a8a;
+}
+
+.form-head-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-close-btn,
+.reset-btn {
+  border: none;
+  cursor: pointer;
+}
+
+.modal-close-btn {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+
+  background: #f1f5f9;
+
+  color: #475569;
+}
+
+.reset-btn {
+  padding: 0 18px;
+
+  border-radius: 12px;
+
+  background: #f1f5f9;
+
+  color: #334155;
+
+  font-weight: 700;
+}
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 16px;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-item label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.form-item input,
+.form-item textarea {
+  border: 1px solid #dbeafe;
+
+  border-radius: 12px;
+
+  padding: 12px;
+
+  font-size: 15px;
+
+  background: #fafcff;
+}
+
+.form-item textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.form-actions {
+  margin-top: 24px;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 48px;
+
+  border: none;
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  color: white;
+
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+/* =======================
+   滚动条
+======================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* =======================
+   案例报告点词云（模块三内）
+======================= */
+
+.two-module-row .half-module:last-child .analysis-layout {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+  min-height: 0;
+}
+
+.two-module-row .half-module:last-child .quality-chart {
+  flex: 4;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* 词云容器 */
+.two-module-row .half-module:last-child .wordcloud-wrapper {
+  flex: 3;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #dbeafe;
+  border-right: 1px solid #dbeafe;
+  padding: 0 12px;
+}
+
+.two-module-row .half-module:last-child .wordcloud-sub-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e3a8a;
+  text-align: center;
+  padding-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.two-module-row .half-module:last-child .case-wordcloud-chart {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+}
+
+.two-module-row .half-module:last-child .analysis-text {
+  flex: 2.5;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #475569;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+/* =======================
+   响应式适配
+======================= */
+
+@media (max-width: 1200px) {
+  .two-module-row .half-module:last-child .analysis-layout {
+    flex-direction: column;
+  }
+
+  .two-module-row .half-module:last-child .wordcloud-wrapper {
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #dbeafe;
+    border-bottom: 1px solid #dbeafe;
+    padding: 8px 0;
+    min-height: 120px;
+  }
+
+  .two-module-row .half-module:last-child .case-wordcloud-chart {
+    min-height: 100px;
+  }
+}
